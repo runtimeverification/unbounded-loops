@@ -1,0 +1,30 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+optimizer = false
+optimizer_runs = 0
+extra_output = ["storageLayout", "evm.bytecode.generatedSources", "evm.deployedBytecode.functionDebugData"]
+via_ir = false
+bytecode_hash = "ipfs"
+cbor_metadata = true
+build_info = true
+cache = false
+
+# Turning off all compiler optimizations is tricky
+# See: https://github.com/foundry-rs/foundry/issues/5175
+[profile.default.optimizer_details]
+peephole = false
+inliner = false
+jumpdest_remover = false
+order_literals = false
+deduplicate = false
+cse = false
+constant_optimizer = false
+yul = true
+
+[profile.default.optimizer_details.yulDetails]
+stackAllocation = false
+optimizerSteps = ":"
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
